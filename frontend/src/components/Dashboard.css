@@ -1,0 +1,289 @@
+/* === Google Font Import === */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* === Global Styles & Theme === */
+body {
+  background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+/* === Header Styling === */
+.dashboard-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  animation: slideInDown 0.6s ease-out;
+}
+
+.dashboard-header h1 {
+  font-weight: 700;
+  color: #004d40;
+  font-size: 1.8rem;
+}
+
+.dashboard-header .highlight {
+  color: #26a69a;
+}
+
+.add-plant-btn {
+  background-color: #26a69a;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(38, 166, 154, 0.3);
+}
+
+.add-plant-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(38, 166, 154, 0.5);
+}
+
+/* === Form Container & Animation === */
+.form-container {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.form-container.show {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Add Plant Form Styling === */
+.add-plant-form {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}
+
+.add-plant-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.add-plant-form .form-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: #00695c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.submit-btn:hover {
+  background: #004d40;
+}
+
+/* === Plant Card Grid & Styling === */
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.plant-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plant-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Status Borders & Background */
+.plant-card.healthy { border-left: 7px solid #4caf50; background: #e6f9e6; }
+.plant-card.due-soon { border-left: 7px solid #ffc107; background: #fff8e1; }
+.plant-card.overdue { border-left: 7px solid #f44336; background: #ffe6e6; }
+
+.plant-card .card-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #004d40;
+}
+.plant-card .card-species {
+  font-style: italic;
+  color: #555;
+  margin-top: -5px;
+  margin-bottom: 1rem;
+}
+.plant-card .card-text { margin: 0.5rem 0; }
+
+/* Badge for Due Today */
+.badge.due-today {
+  background-color: #f44336;
+  color: white;
+  padding: 0.3em 0.8em;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  font-weight: 600;
+  animation: pulse 1.5s infinite;
+}
+
+/* Card Footer & Delete Button */
+.card-footer {
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+  text-align: right;
+}
+
+.delete-btn {
+  background: #ff5252;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.delete-btn:hover {
+  background: #c62828;
+  transform: scale(1.05);
+}
+
+/* === Animations === */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* === Chatbot Styling Merged === */
+.chatbot-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+}
+
+.chatbot-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #26a69a;
+  color: white;
+  border: none;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(38, 166, 154, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.chatbot-icon:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
+}
+
+.chatbot-window {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 320px;
+  height: 450px;
+  background-color: #e0f2f1;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-header {
+  padding: 15px;
+  background-color: #004d40;
+  color: white;
+  font-weight: 600;
+  text-align: center;
+}
+
+.chat-body {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.chat-input {
+  padding: 12px;
+  border: none;
+  border-top: 1px solid #b2dfdb;
+  outline: none;
+  background-color: white;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .plant-grid {
+    grid-template-columns: 1fr;
+  }
+}

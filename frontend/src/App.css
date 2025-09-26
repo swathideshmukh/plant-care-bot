@@ -1,0 +1,386 @@
+/* --- Global & Body Styles (Enhanced) --- */
+body, html, .app-container {
+  /* Soft, natural gradient background */
+  background: linear-gradient(135deg, #f0fdf0, #e0f8e0);
+  min-height: 100vh;
+  /* Modern, readable font (Ensure you import 'Inter' and 'Montserrat' if using an external font) */
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  scroll-behavior: smooth;
+  color: #048404; /* Darker green-gray for primary text */
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* --- Navbar (Refined) --- */
+.navbar.bg-gradient {
+  /* Fresh, slightly lighter green gradient */
+  background: linear-gradient(90deg, #388e3c, #66bb6a);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Elevated, softer shadow */
+  padding: 1.2rem 2.5rem;
+  border-radius: 0 0 25px 25px; /* Softer, more pronounced bottom curve */
+  transition: all 0.3s ease-in-out;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.navbar-brand {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  font-size: 1.75rem;
+  color: #00a123;
+  display: flex;
+  align-items: center;
+}
+/* Note: The '🌱' icon is directly in the HTML, so we don't need a custom class for it here. */
+
+
+/* --- Main Dashboard Area (Spacious & Inviting) --- */
+main.container.my-5 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  max-width: 1400px;
+}
+
+.welcome-text {
+  font-family: 'Montserrat', sans-serif;
+  color: #2e7d32;
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.08);
+  margin-bottom: 3.5rem !important;
+  letter-spacing: -0.5px;
+  /* The welcome text wrapper needs flex for alignment with the new button */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Ensure the h2 inside the flex container is styled correctly */
+.welcome-text h2 {
+    margin: 0; /* Remove default margin for h2 */
+}
+
+/* --- Buttons (Organic & Interactive) --- */
+
+/* "Add a New Plant" Button (Prominent Success Button) */
+.btn-success {
+  background: linear-gradient(135deg, #4CAF50, #66bb6a); /* Soft green gradient */
+  border: none;
+  font-weight: 600;
+  border-radius: 30px; /* Fully rounded, pill-like */
+  padding: 0.75rem 2rem;
+  box-shadow: 0 6px 15px rgba(50,200,50,0.25); /* Green-tinted shadow */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  color: white; /* Ensure text is white */
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #388e3c, #4CAF50);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(50,200,50,0.35);
+}
+
+/* Delete Button (Danger) */
+/* Assuming the delete button uses the bootstrap class `btn-danger` */
+.btn-danger {
+    background: linear-gradient(135deg, #ef5350, #e57373);
+    border: none;
+    font-weight: 500;
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem;
+    color: white;
+    box-shadow: 0 3px 10px rgba(239, 83, 80, 0.2);
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #e53935, #ef5350);
+    transform: translateY(-1px) scale(1.03);
+    box-shadow: 0 5px 15px rgba(239, 83, 80, 0.3);
+}
+
+/* --- Plant Card Styles (Re-Styled for Aesthetics) --- */
+/* The main dashboard element will be the parent of the cards */
+/* If you're using Bootstrap's Grid system (Row/Col), ensure the Dashboard component wraps the cards */
+
+.card {
+  border-radius: 25px; /* Larger, softer border-radius */
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: #ffffff; /* Crisp white background */
+  border: none;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  min-height: 250px; /* Ensure a good height for the card structure */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes delete button to the bottom */
+  margin-bottom: 30px; /* Space between rows of cards */
+}
+
+.card:hover {
+  transform: translateY(-10px) rotateZ(1deg); /* Slight lift and playful tilt */
+  box-shadow: 0 18px 45px rgba(0,0,0,0.15);
+}
+
+/* Card content styling */
+.card-body {
+    padding: 0; /* Remove default padding if using a card-body div */
+    flex-grow: 1;
+}
+
+.card-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #2e7d32; /* Primary green for titles */
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.card-title .plant-icon {
+    font-size: 1.6rem;
+    margin-right: 8px;
+    color: #4CAF50;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    color: #8d9c8d; /* Muted color for subtitle (e.g., 'Pothos', 'vbcn') */
+    margin-bottom: 1rem;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #556b55; /* Slightly darker for date details */
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* Specific styling for the 'Next Watering' text to make it stand out */
+.card-text:nth-child(even) {
+    color: #2e7d32;
+    font-weight: 700;
+}
+
+/* Styling for the Delete button container inside the card */
+.card .btn-danger {
+    align-self: flex-end; /* Push the button to the bottom right */
+    margin-top: 1rem; /* Space between dates and button */
+}
+
+/* --- Animations (Subtle & Engaging) --- */
+/* Smooth fade-in for cards - REFINED ANIMATION */
+.card {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  animation: fadeInUpCard 0.6s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes fadeInUpCard {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Example staggered animation for dashboard cards (requires slight JS or mapping in React) */
+/* If you can, add a `data-index` or similar to your cards */
+/*
+.card[data-index="0"] { animation-delay: 0.1s; }
+.card[data-index="1"] { animation-delay: 0.2s; }
+.card[data-index="2"] { animation-delay: 0.3s; }
+.card[data-index="3"] { animation-delay: 0.4s; }
+*/
+
+
+/* --- Chatbot (Playful & Accessible) --- */
+
+.chatbot-toggle {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 32px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #4CAF50, #388e3c);
+  border: none;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: float-bob 4s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatbot-toggle:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+  background: linear-gradient(135deg, #388e3c, #2e7d32);
+  animation: none;
+}
+
+@keyframes float-bob {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.chatbot-window {
+  position: fixed;
+  bottom: 120px;
+  right: 40px;
+  width: 380px;
+  max-height: 500px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  padding: 20px;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+  border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding-right: 8px;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #f0fdf0;
+  border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: #81c784;
+  border-radius: 10px;
+  border: 2px solid #f0fdf0;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background-color: #66bb6a;
+}
+
+.text-end { /* User Message */
+  background: linear-gradient(135deg, #66bb6a, #4CAF50);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px 20px 5px 20px;
+  max-width: 75%;
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.text-start { /* Bot Message */
+  background: #e8f5e9;
+  color: #3f513f;
+  padding: 10px 15px;
+  border-radius: 20px 20px 20px 5px;
+  max-width: 75%;
+  margin-left: 0;
+  margin-right: auto;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border: 1px solid #d4edda;
+}
+
+input:focus, textarea:focus {
+  box-shadow: 0 0 0 0.25rem rgba(76, 175, 80, 0.3) !important;
+  border-color: #4CAF50 !important;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+  .welcome-text {
+    font-size: 1.8rem;
+    margin-bottom: 2rem !important;
+    flex-direction: column; /* Stack header elements on small screens */
+    align-items: flex-start;
+  }
+  .welcome-text .btn-success {
+      margin-top: 15px;
+      align-self: stretch; /* Make button full width */
+  }
+  .chatbot-toggle {
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    bottom: 20px;
+    right: 20px;
+  }
+  .chatbot-window {
+    width: 90%;
+    right: 5%;
+    bottom: 90px;
+  }
+  .card {
+    padding: 1rem;
+    min-height: auto;
+  }
+}/* --- Dropdown Styling for Aesthetic Look --- */
+
+/* Custom Toggle Button (inherits from .btn-success but with adjustments) */
+.dropdown-toggle-custom {
+    /* Maintain the pill shape */
+    border-radius: 30px !important;
+    padding: 0.5rem 1.25rem !important;
+    font-size: 0.9rem !important;
+    text-transform: none !important;
+    box-shadow: 0 4px 10px rgba(50,200,50,0.15) !important;
+}
+
+/* Dropdown Menu Container */
+.dropdown-menu-custom {
+    border-radius: 15px; /* Soft rounded corners */
+    border: 1px solid #d4edda;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Elevated shadow */
+    padding: 8px 0;
+    margin-top: 10px; /* Space from button */
+}
+
+/* Individual Dropdown Items */
+.dropdown-item-custom {
+    color: #3f513f; /* Dark green text */
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-item-custom:hover,
+.dropdown-item-custom:focus,
+.dropdown-item-custom.active {
+    background-color: #e8f5e9 !important; /* Very light green hover */
+    color: #2e7d32 !important; /* Primary green text on hover/active */
+    /* Remove the default dark background effect on hover/focus */
+    background-image: none !important;
+}
+
+/* Clear the arrow default styling if needed */
+.dropdown-toggle-custom::after {
+    margin-left: 0.75em;
+}

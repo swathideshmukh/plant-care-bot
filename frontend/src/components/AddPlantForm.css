@@ -1,0 +1,23 @@
+.dropdown-select {
+  padding: 10px 15px;
+  border-radius: 25px; /* Oval shape */
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect */
+.dropdown-select:hover {
+  border-color: #4caf50;
+  background-color: #f0fff0;
+}
+
+/* Focus effect */
+.dropdown-select:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
