@@ -92,6 +92,27 @@ body {
 }
 
 
+.water-btn {
+  background-color: #00bfff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.2s;
+}
+
+.water-btn:hover {
+  background-color: #009acd;
+}
+
+.water-btn svg {
+  vertical-align: middle;
+}
 
 .submit-btn {
   width: 100%;

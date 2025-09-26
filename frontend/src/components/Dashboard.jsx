@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AddPlantForm from "./AddPlantForm";
+import { FaTint } from "react-icons/fa"; // Water drop icon
 import "./Dashboard.css";
 
 export default function Dashboard() {
@@ -9,7 +10,9 @@ export default function Dashboard() {
 
   // Determine plant card status
   const getCardClass = (plant) => {
-    const nextWatering = new Date(new Date(plant.lastWateredAt).getTime() + plant.wateringFrequency * 24 * 60 * 60 * 1000);
+    const nextWatering = new Date(
+      new Date(plant.lastWateredAt).getTime() + plant.wateringFrequency * 24 * 60 * 60 * 1000
+    );
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const diffDays = Math.ceil((nextWatering - today) / (1000 * 60 * 60 * 24));
@@ -37,8 +40,22 @@ export default function Dashboard() {
     }
   };
 
+  const waterPlant = async (id) => {
+    try {
+      const today = new Date().toISOString();
+      await axios.put(`http://localhost:5000/api/plants/${id}`, {
+        lastWateredAt: today
+      });
+      fetchPlants(); // Refresh plants to update UI
+    } catch (err) {
+      console.error("Error watering plant:", err);
+    }
+  };
+
   const isDueToday = (plant) => {
-    const nextWatering = new Date(new Date(plant.lastWateredAt).getTime() + plant.wateringFrequency * 24 * 60 * 60 * 1000);
+    const nextWatering = new Date(
+      new Date(plant.lastWateredAt).getTime() + plant.wateringFrequency * 24 * 60 * 60 * 1000
+    );
     const today = new Date();
     return nextWatering.toDateString() === today.toDateString();
   };
@@ -78,18 +95,25 @@ export default function Dashboard() {
           >
             <div className="card-header">
               <h5 className="card-title">🌿 {plant.name}</h5>
-              <p className="card-type">{plant.type}</p> {/* Fixed: use type */}
+              <p className="card-type">{plant.type}</p>
             </div>
             <div className="card-body">
               <p className="card-text">
                 <strong>Last Watered:</strong> {new Date(plant.lastWateredAt).toLocaleDateString()}
               </p>
               <p className="card-text">
-                <strong>Next Watering:</strong> {new Date(new Date(plant.lastWateredAt).getTime() + plant.wateringFrequency * 24 * 60 * 60 * 1000).toLocaleDateString()}
+                <strong>Next Watering:</strong>{" "}
+                {new Date(
+                  new Date(plant.lastWateredAt).getTime() +
+                  plant.wateringFrequency * 24 * 60 * 60 * 1000
+                ).toLocaleDateString()}
                 {isDueToday(plant) && <span className="badge due-today">Due Today!</span>}
               </p>
             </div>
             <div className="card-footer">
+              <button className="water-btn" onClick={() => waterPlant(plant._id)}>
+                <FaTint /> Water
+              </button>
               <button className="delete-btn" onClick={() => deletePlant(plant._id)}>
                 Delete
               </button>

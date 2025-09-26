@@ -2,11 +2,16 @@ const express = require("express");
 const Plant = require("../models/Plant");
 const router = express.Router();
 
-// Create a new plant
+// 🔹 Create a new plant
 router.post("/", async (req, res) => {
   try {
     const { name, type, wateringFrequency, lastWateredAt } = req.body;
-    const newPlant = new Plant({ name, type, wateringFrequency, lastWateredAt });
+    const newPlant = new Plant({
+      name,
+      type,
+      wateringFrequency,
+      lastWateredAt: lastWateredAt || Date.now(), // default to now if not provided
+    });
     await newPlant.save();
     res.status(201).json(newPlant);
   } catch (err) {
@@ -14,7 +19,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Get all plants
+// 🔹 Get all plants
 router.get("/", async (req, res) => {
   try {
     const plants = await Plant.find();
@@ -24,17 +29,34 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Update plant
+// 🔹 Update plant (generic)
 router.put("/:id", async (req, res) => {
   try {
-    const plant = await Plant.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.json(plant);
+    const updatedPlant = await Plant.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedPlant) return res.status(404).json({ error: "Plant not found" });
+    res.json(updatedPlant);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// Delete plant
+// 🔹 Water plant (update lastWateredAt to today)
+router.put("/water/:id", async (req, res) => {
+  try {
+    const today = new Date();
+    const wateredPlant = await Plant.findByIdAndUpdate(
+      req.params.id,
+      { lastWateredAt: today },
+      { new: true }
+    );
+    if (!wateredPlant) return res.status(404).json({ error: "Plant not found" });
+    res.json(wateredPlant);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// 🔹 Delete plant
 router.delete("/:id", async (req, res) => {
   try {
     await Plant.findByIdAndDelete(req.params.id);

@@ -53,16 +53,19 @@ export default function AddPlantForm({ refresh, closeForm }) {
         </select>
       </div>
 
+      
       <div className="form-row">
-        <label>Last Watered On:</label>
-        <input
-          type="date"
-          name="lastWateredAt"
-          value={form.lastWateredAt}
-          onChange={handleChange}
-          required
-        />
-      </div>
+  <label>Last Watered On:</label>
+  <input
+    type="date"
+    name="lastWateredAt"
+    value={form.lastWateredAt}
+    onChange={handleChange}
+    max={new Date().toISOString().split("T")[0]} // ❌ Prevent future dates
+    required
+  />
+</div>
+
 
       <WateringSlider
         value={form.wateringFrequency}
